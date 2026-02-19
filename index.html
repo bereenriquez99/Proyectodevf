@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exclusivos | Joyería artesanal en plata</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+<header class="header" id="header">
+  <div class="container nav-container">
+    
+    <!-- LOGO SVG -->
+    <a href="#inicio" class="logo">
+      <svg width="45" height="45" viewBox="0 0 100 100" aria-hidden="true">
+        <!-- Anillo -->
+        <circle cx="50" cy="60" r="25" stroke="#0A2540" stroke-width="4" fill="none"/>
+        <!-- Brillo -->
+        <polygon points="50,10 55,25 70,30 55,35 50,50 45,35 30,30 45,25" fill="#3B82F6"/>
+        <!-- Detalle inspirado en greca mexicana -->
+        <rect x="20" y="80" width="60" height="5" fill="#0A2540"/>
+      </svg>
+      <span>Exclusivos</span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Abrir menú">
+      ☰
+    </button>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="container hero-content">
+      <h1>Exclusivos</h1>
+      <p class="slogan">Joyería artesanal en plata que honra la tradición mexicana.</p>
+      <p>Piezas únicas hechas a mano en plata 925, con diseño mexicano contemporáneo.</p>
+      <div class="hero-buttons">
+        <a href="#servicios" class="btn primary">Ver colección</a>
+        <a href="#cotizacion" class="btn secondary">Cotizar pieza personalizada</a>
+      </div>
+
+      <!-- Mini formulario cotización -->
+      <form id="cotizacion" class="mini-form">
+        <h3>Cotiza tu pieza</h3>
+        <label>Tipo de pieza
+          <select required>
+            <option value="">Selecciona</option>
+            <option>Anillo</option>
+            <option>Collar</option>
+            <option>Pulsera</option>
+          </select>
+        </label>
+        <label>Presupuesto aproximado
+          <input type="number" required>
+        </label>
+        <label>Fecha tentativa
+          <input type="date" required>
+        </label>
+        <button type="submit" class="btn primary">Solicitar cotización</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- HISTORIA -->
+  <section id="historia" class="section">
+    <div class="container">
+      <h2>Nuestra Historia</h2>
+      <p>Exclusivos nace en México con la pasión por preservar la tradición de la joyería artesanal en plata 925. Cada pieza es trabajada cuidadosamente por manos expertas.</p>
+      <p>Combinamos artesanía, calidad y diseño contemporáneo para crear piezas únicas que reflejan identidad, elegancia y orgullo mexicano.</p>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="section gray">
+    <div class="container">
+      <h2>Servicios</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Joyería artesanal</h3>
+          <p>Piezas únicas hechas a mano en plata 925.</p>
+        </div>
+        <div class="card">
+          <h3>Limpieza y mantenimiento</h3>
+          <p>Restauramos el brillo original de tus piezas.</p>
+        </div>
+        <div class="card">
+          <h3>Compra/Venta oro y plata</h3>
+          <p>Transacciones seguras y avalúos profesionales.</p>
+        </div>
+        <div class="card">
+          <h3>Ajustes y grabados</h3>
+          <p>Ajuste de talla, pulido, reparaciones y grabado personalizado.</p>
+        </div>
+      </div>
+
+      <!-- Tabla -->
+      <h3>Tabla de Servicios</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Servicio</th>
+            <th>Tiempo estimado</th>
+            <th>Desde</th>
+            <th>Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Limpieza</td>
+            <td>24 horas</td>
+            <td>$250 MXN</td>
+            <td>Incluye pulido básico</td>
+          </tr>
+          <tr>
+            <td>Ajuste de talla</td>
+            <td>48 horas</td>
+            <td>$400 MXN</td>
+            <td>Sujeto a evaluación</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="section">
+    <div class="container">
+      <h2>Contacto</h2>
+
+      <form id="contact-form">
+        <label>Nombre
+          <input type="text" required>
+        </label>
+        <label>Email
+          <input type="email" required>
+        </label>
+        <label>Teléfono
+          <input type="tel" required>
+        </label>
+        <label>Motivo
+          <select required>
+            <option value="">Selecciona</option>
+            <option>Compra</option>
+            <option>Limpieza</option>
+            <option>Compra/Venta</option>
+            <option>Personalizado</option>
+          </select>
+        </label>
+        <label>Mensaje
+          <textarea required></textarea>
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" required> Acepto aviso de privacidad
+        </label>
+        <button type="submit" class="btn primary">Enviar</button>
+        <p id="form-message"></p>
+      </form>
+
+      <div class="contact-info">
+        <p>📍 México</p>
+        <p>📱 WhatsApp: +52 55 0000 0000</p>
+        <p>✉️ contacto@exclusivos.mx</p>
+        <p><strong>Horario:</strong> Lunes a Sábado 10:00 – 19:00</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2026 Exclusivos. Todos los derechos reservados.</p>
+    <nav aria-label="Footer">
+      <a href="#inicio">Inicio</a> |
+      <a href="#historia">Historia</a> |
+      <a href="#servicios">Servicios</a> |
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Volver arriba">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>

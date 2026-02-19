@@ -1,0 +1,161 @@
+:root {
+  --white: #FFFFFF;
+  --navy: #0A2540;
+  --blue: #3B82F6;
+  --gray: #F3F4F6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--white);
+  color: var(--navy);
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+}
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+  background: var(--blue);
+  color: white;
+  padding: 8px;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  z-index: 1000;
+  transition: box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--navy);
+}
+
+.nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--navy);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  font-size: 24px;
+  border: none;
+}
+
+.hero {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.slogan {
+  color: var(--blue);
+  font-weight: 500;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5px;
+  transition: 0.3s;
+}
+
+.primary {
+  background: var(--blue);
+  color: white;
+}
+
+.primary:hover {
+  background: var(--navy);
+}
+
+.secondary {
+  border: 2px solid var(--blue);
+  color: var(--blue);
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.gray {
+  background: var(--gray);
+}
+
+.cards {
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.footer {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  padding: 10px;
+}
