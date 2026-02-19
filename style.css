@@ -1,161 +1,438 @@
+/* =========================
+   EXCLUSIVOS — PREMIUM + DINÁMICO (con imágenes + emojis sin perder legibilidad)
+   Mantiene tus clases actuales: .hero, .cards, .card, .btn, .primary, .secondary, etc.
+========================= */
+
+/* ====== VARIABLES ====== */
 :root {
   --white: #FFFFFF;
   --navy: #0A2540;
+  --navy-dark: #071a30;
   --blue: #3B82F6;
   --gray: #F3F4F6;
+  --soft-gray: #F8FAFC;
+
+  /* Plata */
+  --silver-gradient: linear-gradient(135deg, #eef2f7, #cfd9df, #f7fafc);
+  --glass: rgba(255,255,255,0.10);
+
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.10);
+  --shadow-elegant: 0 20px 45px rgba(0,0,0,0.16);
+
+  --radius-lg: 22px;
+  --radius-md: 16px;
+
+  --max: 1100px;
+
+  --text: #0A2540;
+  --muted: #334155;
 }
 
-* {
-  box-sizing: border-box;
-}
+/* ====== RESET ====== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  background: var(--white);
-  color: var(--navy);
-  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(900px 500px at 15% 5%, rgba(59,130,246,0.12), transparent 55%),
+              radial-gradient(900px 500px at 85% 15%, rgba(10,37,64,0.10), transparent 60%),
+              var(--soft-gray);
+  color: var(--text);
+  line-height: 1.6;
 }
 
+/* ====== TIPOGRAFÍA ====== */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.3px;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 1.1; }
+h2 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 18px; }
+h3 { font-size: 1.2rem; margin-bottom: 10px; }
+
+p { color: var(--muted); font-size: 1rem; }
+
+/* ====== LAYOUT ====== */
 .container {
   width: 90%;
-  max-width: 1100px;
+  max-width: var(--max);
   margin: auto;
 }
 
-.skip-link {
-  position: absolute;
-  left: -999px;
-}
+/* ====== SKIP LINK ====== */
+.skip-link { position: absolute; left: -999px; top: 0; }
 .skip-link:focus {
-  left: 10px;
-  top: 10px;
+  left: 12px; top: 12px;
   background: var(--blue);
   color: white;
-  padding: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  z-index: 9999;
+  box-shadow: var(--shadow-soft);
 }
 
+/* ====== HEADER ====== */
 .header {
   position: sticky;
   top: 0;
-  background: var(--white);
   z-index: 1000;
-  transition: box-shadow 0.3s ease;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(10,37,64,0.08);
+  transition: box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .header.scrolled {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.92);
+  box-shadow: var(--shadow-soft);
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
+  padding: 14px 0;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: bold;
+  gap: 12px;
+  font-weight: 800;
   text-decoration: none;
   color: var(--navy);
 }
 
+.logo span {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.4px;
+}
+
+/* NAV */
 .nav ul {
   display: flex;
-  gap: 20px;
+  gap: 28px;
   list-style: none;
-  padding: 0;
 }
 
 .nav a {
   text-decoration: none;
   color: var(--navy);
+  font-weight: 600;
+  opacity: 0.9;
+  position: relative;
+  padding: 6px 2px;
+  transition: opacity 0.2s ease;
 }
 
-.menu-toggle {
-  display: none;
-  background: none;
-  font-size: 24px;
-  border: none;
+.nav a:hover { opacity: 1; }
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--blue);
+  transition: width 0.25s ease;
 }
+.nav a:hover::after { width: 100%; }
 
+/* ====== HERO CON IMAGEN + OVERLAY (NO SE PIERDE TEXTO) ====== */
 .hero {
-  padding: 80px 0;
+  position: relative;
+  padding: 110px 0 80px;
   text-align: center;
+  overflow: hidden;
+  background:
+    /* imagen joyería (puedes cambiar el URL) */
+    url("https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1800&q=70")
+    center/cover no-repeat;
 }
+
+/* Overlay para legibilidad */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(7,26,48,0.78), rgba(7,26,48,0.50), rgba(248,250,252,0.92));
+}
+
+/* Brillos dinámicos */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.22), transparent 35%),
+    radial-gradient(circle at 70% 40%, rgba(59,130,246,0.18), transparent 45%),
+    radial-gradient(circle at 50% 75%, rgba(255,255,255,0.18), transparent 55%);
+  filter: blur(2px);
+  animation: floatGlow 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hero .container,
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 { color: white; text-shadow: 0 10px 35px rgba(0,0,0,0.35); }
 
 .slogan {
-  color: var(--blue);
-  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+  font-weight: 600;
+  margin: 14px 0 14px;
+  font-size: 1.1rem;
 }
 
+.hero p {
+  color: rgba(255,255,255,0.86);
+  max-width: 720px;
+  margin: 0 auto 22px;
+}
+
+/* Badge con emojis (sin exagerar) */
+.hero .hero-badge {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 16px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.20);
+}
+.hero .hero-badge span { font-weight: 600; }
+
+/* ====== BOTONES (ELEGANTES + DINÁMICOS) ====== */
 .btn {
-  padding: 10px 20px;
-  border-radius: 25px;
+  padding: 14px 30px;
+  border-radius: 999px;
   text-decoration: none;
-  display: inline-block;
-  margin: 5px;
-  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(6px);
 }
 
 .primary {
-  background: var(--blue);
-  color: white;
+  background: var(--silver-gradient);
+  color: var(--navy);
 }
-
 .primary:hover {
-  background: var(--navy);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-elegant);
 }
 
 .secondary {
-  border: 2px solid var(--blue);
-  color: var(--blue);
+  border: 2px solid rgba(255,255,255,0.70);
+  color: white;
+  background: rgba(255,255,255,0.08);
+}
+.secondary:hover {
+  background: rgba(255,255,255,0.92);
+  color: var(--navy);
+  border-color: rgba(255,255,255,0.92);
 }
 
-.section {
-  padding: 60px 0;
-}
+/* ====== SECCIONES ====== */
+.section { padding: 95px 0; }
 
 .gray {
-  background: var(--gray);
+  background:
+    radial-gradient(700px 380px at 15% 15%, rgba(59,130,246,0.12), transparent 55%),
+    radial-gradient(700px 380px at 85% 40%, rgba(10,37,64,0.08), transparent 60%),
+    var(--gray);
 }
 
+/* ====== CARDS CON IMAGEN (sin perder texto) ====== */
 .cards {
   display: grid;
-  gap: 20px;
+  gap: 22px;
+  margin-top: 34px;
 }
 
+/* Si tu HTML no tiene <img> dentro, esto igual se ve bien */
 .card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(10,37,64,0.08);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* Acabado “plata” sutil */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(207,217,223,0.55), transparent 60%);
+  transform: rotate(20deg);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-elegant);
+}
+
+/* Título con emoji decorativo (si tu HTML no trae emojis, se verá normal) */
+.card h3 {
+  color: var(--navy);
+}
+
+/* Soporte para <img> en cards (tu segundo HTML lo usa) */
+.card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: 14px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.10);
+}
+
+/* ====== TABLA ELEGANTE ====== */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 28px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(10,37,64,0.08);
 }
 
-th, td {
-  border: 1px solid #ddd;
-  padding: 10px;
+th {
+  background: linear-gradient(135deg, var(--navy), var(--navy-dark));
+  color: white;
+  text-align: left;
+  padding: 16px;
+  font-weight: 700;
 }
 
+td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(2,6,23,0.08);
+  color: #0f172a;
+}
+
+tr:hover td {
+  background: rgba(59,130,246,0.06);
+}
+
+/* ====== FORMULARIOS (para que se vea boutique) ====== */
+form {
+  display: grid;
+  gap: 14px;
+  margin-top: 26px;
+  max-width: 560px;
+}
+
+label { font-weight: 600; color: #0f172a; }
+
+input, textarea, select {
+  width: 100%;
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(10,37,64,0.14);
+  background: rgba(255,255,255,0.92);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+textarea { min-height: 120px; resize: vertical; }
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: rgba(59,130,246,0.75);
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.18);
+  transform: translateY(-1px);
+}
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Mensajes del formulario (si los usas) */
+#form-message {
+  margin-top: 8px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+/* ====== FOOTER PREMIUM ====== */
 .footer {
-  background: var(--navy);
+  background: radial-gradient(900px 500px at 20% 20%, rgba(59,130,246,0.18), transparent 60%),
+              linear-gradient(135deg, var(--navy), var(--navy-dark));
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 56px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
+.footer nav a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer nav a:hover { color: white; }
+
+/* ====== BACK TO TOP ====== */
 #backToTop {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 22px;
+  right: 22px;
   display: none;
-  padding: 10px;
+  padding: 14px 16px;
+  border-radius: 999px;
+  background: var(--silver-gradient);
+  border: 1px solid rgba(10,37,64,0.10);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#backToTop:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-elegant);
+}
+
+/* ====== ANIMACIONES ====== */
+@keyframes floatGlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+  50% { transform: translateY(18px) rotate(2deg); opacity: 1; }
+}
+
+/* ====== RESPONSIVE ====== */
+@media (min-width: 768px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Menú móvil básico (si activas .menu-toggle en tu HTML/JS) */
+@media (max-width: 768px) {
+  .nav ul { gap: 18px; }
 }
